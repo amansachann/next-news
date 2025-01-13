@@ -8,8 +8,12 @@ import {
 import Link from "next/link";
 import React from "react";
 
-const FilteredNewsPage = ({ params }: { params: { filter: string[] } }) => {
-  const filter = params.filter;
+const FilteredNewsPage = async ({
+  params,
+}: {
+  params: Promise<{ filter: string[] }>;
+}) => {
+  const filter = (await params).filter;
   const selectedYear = filter?.[0];
   const selectedMonth = filter?.[1];
 
@@ -29,6 +33,15 @@ const FilteredNewsPage = ({ params }: { params: { filter: string[] } }) => {
   if (news && news.length > 0) {
     newsContent = <NewsList news={news} />;
   }
+
+  if (
+    (selectedYear && !getAvailableNewsYears().includes(+selectedYear)) ||
+    (selectedMonth &&
+      !getAvailableNewsMonths(+selectedYear).includes(+selectedMonth))
+  ) {
+    throw new Error("Invalid filter");
+  }
+
   return (
     <>
       <header id="archive-header">
