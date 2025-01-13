@@ -14,6 +14,9 @@ const FilteredNewsPage = async ({
   params: Promise<{ filter: string[] }>;
 }) => {
   const filter = (await params).filter;
+  if (filter !== undefined && filter.length > 2) {
+    throw new Error("Invalid filter");
+  }
   const selectedYear = filter?.[0];
   const selectedMonth = filter?.[1];
 
