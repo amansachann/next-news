@@ -1,9 +1,13 @@
 import React from "react";
 import { DUMMY_NEWS } from "../../../../dummy-news";
+import { notFound } from "next/navigation";
 
 const NewsDetailPage = ({ params }: { params: { slug: string } }) => {
   const newsSlug = params.slug;
   const newsItem = DUMMY_NEWS.find((news) => news.slug === newsSlug);
+
+  // If the news item is not found, return a 404 page
+  if (!newsItem) notFound();
   return (
     <article className="news-article">
       <header>
