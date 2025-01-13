@@ -7,6 +7,7 @@ const NewsDetailPage = ({ params }: { params: { slug: string } }) => {
   const newsItem = DUMMY_NEWS.find((news) => news.slug === newsSlug);
 
   // If the news item is not found, return a 404 page
+  // notFound() is a function that shows the closest not-found.tsx file 
   if (!newsItem) notFound();
   return (
     <article className="news-article">
