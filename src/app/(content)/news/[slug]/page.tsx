@@ -1,11 +1,12 @@
 import React from "react";
-import { DUMMY_NEWS } from "../../../../../dummy-news";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { getNewsItem } from "@/lib/news";
 
 const NewsDetailPage = async ({ params }: { params: { slug: string } }) => {
   const newsSlug = (await params).slug;
-  const newsItem = DUMMY_NEWS.find((news) => news.slug === newsSlug);
+  const newsItem = await getNewsItem(newsSlug);
+  console.log();
 
   // If the news item is not found, return a 404 page
   // notFound() is a function that shows the closest not-found.tsx file
