@@ -3,8 +3,8 @@ import React from "react";
 import NewsList from "@/components/news-list";
 import { getAllNews } from "@/lib/news";
 
-const NewsPage = () => {
-  const news = getAllNews();
+const NewsPage = async () => {
+  const news = await getAllNews();
 
   return (
     <>

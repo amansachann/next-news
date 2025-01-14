@@ -10,8 +10,9 @@ interface NewsItem {
   title: string;
 }
 
-export function getAllNews(): NewsItem[] {
+export async function getAllNews(): Promise<NewsItem[]> {
   const news = db.prepare("SELECT * FROM news").all();
+  await new Promise((resolve) => setTimeout(resolve, 1000));
   return news as NewsItem[];
 }
 
