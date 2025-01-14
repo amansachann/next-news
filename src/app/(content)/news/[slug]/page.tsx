@@ -1,5 +1,5 @@
 import React from "react";
-import { DUMMY_NEWS } from "../../../../dummy-news";
+import { DUMMY_NEWS } from "../../../../../dummy-news";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 

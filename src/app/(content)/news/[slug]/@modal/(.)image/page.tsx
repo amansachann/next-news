@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { DUMMY_NEWS } from "../../../../../../dummy-news";
+import { DUMMY_NEWS } from "../../../../../../../dummy-news";
 import { notFound, useRouter } from "next/navigation";
 
 function InterceptedImagePage({ params }: { params: { slug: string } }) {
